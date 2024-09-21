@@ -1,0 +1,17 @@
+service: my-serverless-service
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+
+functions:
+  app:
+    handler: app.handler  # This points to the exported handler in app.js
+    events:
+      - http:
+          path: /get-files
+          method: get  # Allow any method for all routes
